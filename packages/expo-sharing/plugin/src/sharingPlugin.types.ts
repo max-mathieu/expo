@@ -73,6 +73,11 @@ export type ActivationRuleOptions = {
 export type ActivationRule = ActivationRuleOptions | string;
 
 export type ShareExtensionConfigPluginProps = {
+  /**
+   * URL scheme the share extension uses to open the app. Defaults to `scheme` from the app config
+   * (the first one when it is an array), then to the iOS bundle identifier or Android package.
+   */
+  scheme?: string;
   ios?: {
     enabled?: boolean;
     extensionBundleIdentifier?: string;

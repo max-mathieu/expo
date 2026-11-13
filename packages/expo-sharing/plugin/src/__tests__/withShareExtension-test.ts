@@ -52,4 +52,13 @@ describe('withShareExtension', () => {
   it('falls back to the android package without a scheme', async () => {
     expect(await getAndroidShareIntoScheme(createConfig(), props)).toBe('com.example.app');
   });
+
+  it('prefers the scheme plugin option over the app config', async () => {
+    expect(
+      await getAndroidShareIntoScheme(createConfig(['first', 'second']), {
+        ...props,
+        scheme: 'custom',
+      })
+    ).toBe('custom');
+  });
 });
